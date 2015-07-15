@@ -3,26 +3,39 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" BorderThickness="1" 
                        DockPanel.Dock="Left" MinWidth="500" MinHeight="100"
+                         xmlns:s="clr-namespace:Factory.Infrastructure.Controls;assembly=Factory.Infrastructure"
+                     
                               >
     <UserControl.Resources>
-        <ControlTemplate x:Key="validationTemplate">
-            <Grid>
-                <Ellipse Fill="Red" Opacity="0.8" Width="10" Height="10"
-                 HorizontalAlignment="Right" VerticalAlignment="Top"
-                 ToolTip="{Binding Path=ErrorContent}" />
-                <AdornedElementPlaceholder />
+        <!-- MoveThumb Template -->
+        <ControlTemplate x:Key="MoveThumbTemplate" TargetType="{x:Type s:MoveThumb}">
+            <Rectangle Fill="Transparent"/>
+        </ControlTemplate>
+
+        <!-- Designer Item Template-->
+        <ControlTemplate x:Key="DesignerItemTemplate" TargetType="ContentControl">
+            <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                <s:MoveThumb Template="{StaticResource MoveThumbTemplate}" Cursor="SizeAll"/>
+                
+                <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
             </Grid>
         </ControlTemplate>
+
+        
     </UserControl.Resources>
 
-    <Grid Background="Transparent" HorizontalAlignment="Stretch">
+    <ContentControl 
+        Canvas.Top="150"
+        Canvas.Left="470"
+        Template="{StaticResource DesignerItemTemplate}">
+    <Grid Background="White" HorizontalAlignment="Stretch">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="109*"/>
         </Grid.RowDefinitions>
 
-
+        
 
 
         <Border BorderThickness="1" CornerRadius="5,5,0,0" BorderBrush="Gray" Grid.Row="0">
@@ -57,5 +70,5 @@
         </Border>
 
     </Grid>
-
+    </ContentControl>
 </UserControl>

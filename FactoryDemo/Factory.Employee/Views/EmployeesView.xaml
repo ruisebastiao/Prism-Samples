@@ -66,10 +66,10 @@
                                HorizontalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch"
                     VerticalScrollBarVisibility="Auto"
                               >
-                    <DockPanel  x:Name="EmployeeContent" LastChildFill="True"
+                    <Canvas  x:Name="EmployeeContent"
                     prism:RegionManager.RegionName="{x:Static infs:RegionNames.SelectedEmployeeRegion}">
                         
-                    </DockPanel>
+                    </Canvas>
                 </ScrollViewer>
                 <Button Content="Button" Grid.Column="1"/>
             </Grid>

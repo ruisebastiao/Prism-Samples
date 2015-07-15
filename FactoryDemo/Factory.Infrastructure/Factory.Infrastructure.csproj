@@ -58,15 +58,22 @@
       <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\CanvasRegionAdapter.cs" />
+    <Compile Include="Adapters\GridRegionAdapter.cs" />
+    <Compile Include="Controls\MoveThumb.cs" />
     <Compile Include="Events\HideApplicationMessageEvent.cs" />
     <Compile Include="Events\ShowApplicationMessageEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

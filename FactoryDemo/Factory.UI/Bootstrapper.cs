@@ -1,5 +1,6 @@
 ﻿using Factory.Dashboard;
 using Factory.EmployeeModule.Services;
+using Factory.Infrastructure.Adapters;
 using Factory.Logging;
 using Factory.Model;
 using Factory.UI.Adapters;
@@ -92,6 +93,9 @@ namespace Factory.UI
         {
             RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
             mappings.RegisterMapping(typeof(DockPanel), Container.TryResolve<DockPanelRegionAdapter>());
+            mappings.RegisterMapping(typeof(WrapPanel), Container.TryResolve<WrapPanelRegionAdapter>());
+            mappings.RegisterMapping(typeof(Grid), Container.TryResolve<GridRegionAdapter>());
+            mappings.RegisterMapping(typeof(Canvas), Container.TryResolve<CanvasRegionAdapter>());
             return mappings;
         }
 

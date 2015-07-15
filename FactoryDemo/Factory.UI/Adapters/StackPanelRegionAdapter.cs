@@ -46,6 +46,7 @@ namespace Factory.UI.Adapters
             return new AllActiveRegion();
         }
     }
+
     public class DockPanelRegionAdapter : RegionAdapterBase<DockPanel>
     {
         public DockPanelRegionAdapter(IRegionBehaviorFactory factory)
