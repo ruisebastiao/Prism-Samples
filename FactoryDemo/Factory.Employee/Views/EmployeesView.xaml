@@ -12,27 +12,10 @@
             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
             mc:Ignorable="d"
             xmlns:toolkit="WPFToolkit"
+             HorizontalContentAlignment="Stretch"
              >
 
-    <UserControl.Resources>
-        <Style x:Key="MainTabItem" TargetType="{x:Type TabItem}">
-            <Setter Property="Header" Value="{Binding Content.DataContext, RelativeSource={RelativeSource Self}}" />
-            <Setter Property="HeaderTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <TextBlock Grid.Column="1"
-                       Margin="2"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       FontSize="14.667"
-                       Foreground="Blue"
-                       Padding="2"
-                       Text="{Binding Employee.FirstName}" />
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
+   
 
     <Grid>
         <Border BorderBrush="Gray" BorderThickness="0.5" CornerRadius="5">
@@ -49,7 +32,7 @@
 
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="Current Employees" FontSize="14.667" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Center" />
-                        <ListView x:Name="EmployeesListView" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}"
+                        <ListView x:Name="EmployeesListView" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Center" VerticalAlignment="Top" 
                           ItemsSource="{Binding EmployeeVMList}"
                           SelectionMode="Multiple"
                            IsSynchronizedWithCurrentItem="True"
@@ -69,8 +52,8 @@
                                 
                             <GridView>
 
-                                <GridViewColumn Header="First Name" Width="120" DisplayMemberBinding="{Binding Employee.FirstName}" />
-                                <GridViewColumn Header="Last Name" Width="120" DisplayMemberBinding="{Binding Employee.LastName}" />
+                                <GridViewColumn  Header="First Name" Width="120" DisplayMemberBinding="{Binding Employee.FirstName}" />
+                                    <GridViewColumn Header="Last Name" Width="120" DisplayMemberBinding="{Binding Employee.LastName}" />
 
                             </GridView>
                             </ListView.View>
@@ -80,13 +63,13 @@
                 </Border>
 
                 <ScrollViewer Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ScrollViewer.PanningMode="Both"
-                               HorizontalScrollBarVisibility="Auto"
+                               HorizontalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch"
                     VerticalScrollBarVisibility="Auto"
                               >
-                    <StackPanel Orientation="Horizontal" x:Name="EmployeeContent" 
+                    <DockPanel  x:Name="EmployeeContent" LastChildFill="True"
                     prism:RegionManager.RegionName="{x:Static infs:RegionNames.SelectedEmployeeRegion}">
-
-                    </StackPanel>
+                        
+                    </DockPanel>
                 </ScrollViewer>
                 <Button Content="Button" Grid.Column="1"/>
             </Grid>

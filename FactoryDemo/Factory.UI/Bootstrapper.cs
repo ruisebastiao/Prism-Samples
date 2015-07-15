@@ -91,7 +91,7 @@ namespace Factory.UI
         protected override Microsoft.Practices.Prism.Regions.RegionAdapterMappings ConfigureRegionAdapterMappings()
         {
             RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
-            mappings.RegisterMapping(typeof(StackPanel), Container.TryResolve<StackPanelRegionAdapter>());
+            mappings.RegisterMapping(typeof(DockPanel), Container.TryResolve<DockPanelRegionAdapter>());
             return mappings;
         }
 

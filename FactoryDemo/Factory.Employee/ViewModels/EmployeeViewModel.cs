@@ -7,12 +7,13 @@ using Factory.MVVM;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Unity;
+using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Factory.EmployeeModule.ViewModels
 {
-    public class EmployeeViewModel : ViewModelBase<Employee>
+    public class EmployeeViewModel : ViewModelBase<Employee>, IDataErrorInfo
     {
         private IUnityContainer container = null;
         private IModelService modelService = null;
@@ -91,6 +92,24 @@ namespace Factory.EmployeeModule.ViewModels
             set {
                 SetProperty(ref _isSelected, value, dependentProperties: new string[] { "Background" });
                 this.eventAggregator.GetEvent<SetVisibleEmployeeViewModelEvent>().Publish(this); 
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return (Employee as IDataErrorInfo).Error;
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = (Employee as IDataErrorInfo)[columnName];
+                CommandManager.InvalidateRequerySuggested();
+                return error;
             }
         }
     }

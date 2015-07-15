@@ -1,9 +1,10 @@
 ﻿using Factory.MVVM;
 using System;
+using System.ComponentModel;
 
 namespace Factory.EmployeeModule.Models
 {
-    public class Employee : BindableBaseEx
+    public class Employee : BindableBaseEx, IDataErrorInfo
     {
 
         #region Fields
@@ -81,6 +82,39 @@ namespace Factory.EmployeeModule.Models
         {
             return FullName;
         }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string propertyName]
+        {
+            get {
+                string validationResult = null;
+                switch (propertyName)
+                {
+                    case "FirstName":
+                        if (String.IsNullOrEmpty(FirstName))
+                        {
+                            validationResult = "First name can't be empty";
+                        }
+                        
+                        break;
+                    case "LastName":
+                         if (String.IsNullOrEmpty(LastName))
+                        {
+                            validationResult = "Last name can't be empty";
+                        }
+                        
+                        break;
+                    default:
+                        throw new ApplicationException("Unknown Property being validated on Employee.");
+                }
+                return validationResult;
+            }
+        }
+        
         #endregion
 
         #region Constructors

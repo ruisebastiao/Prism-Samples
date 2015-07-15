@@ -21,9 +21,9 @@ namespace Factory.EmployeeModule.Services
 
 
 
-            var rv = this.Employees.AddEmployee("Renato", "Vale",false);
+            var rv = this.Employees.AddEmployee("Renato", "Vale",true);
 
-            var no = this.Employees.AddEmployee("Nune", "Olaio",false);
+            var no = this.Employees.AddEmployee("Nune", "Olaio",true);
            
         }
     }
