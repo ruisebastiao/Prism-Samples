@@ -40,6 +40,7 @@ namespace Factory.Model
                 /// 2. Register the desired view(UserControl) with the region.
                 /// See the code-behind of CustomerListView for setting the DataContext = ViewModel.
                 var regionManager = this.container.Resolve<IRegionManager>();
+                regionManager.RegisterViewWithRegion(RegionNames.SelectedEmployeeRegion, typeof(EmployeeView));               
                 regionManager.RegisterViewWithRegion(RegionNames.EmployeesRegion, typeof(EmployeesView));
                 
 

@@ -1,14 +1,9 @@
 ﻿using Microsoft.Practices.Prism.Regions;
-using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Factory.UI.Adapters
+namespace Factory.Infrastructure.Adapters
 {
     public class StackPanelRegionAdapter : RegionAdapterBase<StackPanel>
     {
@@ -25,11 +20,11 @@ namespace Factory.UI.Adapters
                 {
                     foreach (FrameworkElement element in e.NewItems)
                     {
-                        
+
                         regionTarget.Children.Add(element);
                     }
                 }
-                else if (e.Action== NotifyCollectionChangedAction.Remove)
+                else if (e.Action == NotifyCollectionChangedAction.Remove)
                 {
                     foreach (FrameworkElement element in e.OldItems)
                     {
@@ -61,7 +56,7 @@ namespace Factory.UI.Adapters
                 {
                     foreach (FrameworkElement element in e.NewItems)
                     {
-                        
+
                         regionTarget.Children.Add(element);
                     }
                 }
@@ -83,6 +78,6 @@ namespace Factory.UI.Adapters
             return new AllActiveRegion();
         }
     }
-    
+
 
 }

@@ -6,6 +6,6 @@
         public static readonly string EmployeesRegion = "EmployeesRegion";
         public static readonly string ModalRegion = "ModalRegion";
         public static readonly string SelectedEmployeeRegion = "SelectedEmployeeRegion";
-        public static readonly string SelectedEmployeesRegion = "SelectedEmployeesRegion";
+        //public static readonly string SelectedEmployeeDockRegion = "SelectedEmployeeDockRegion";
     }
 }

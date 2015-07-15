@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
               xmlns:prism="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism.Composition"
               xmlns:infs="clr-namespace:Factory.Infrastructure;assembly=Factory.Infrastructure"
+              xmlns:infad="clr-namespace:Factory.Infrastructure.Adapters;assembly=Factory.Infrastructure"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:interact="clr-namespace:Microsoft.Practices.Prism.Interactivity;assembly=Microsoft.Practices.Prism.Interactivity"
              xmlns:Options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
@@ -13,6 +14,8 @@
             mc:Ignorable="d"
             xmlns:toolkit="WPFToolkit"
              HorizontalContentAlignment="Stretch"
+             xmlns:ad="http://schemas.xceed.com/wpf/xaml/avalondock"
+            
              >
 
    
@@ -62,14 +65,19 @@
                     </StackPanel>
                 </Border>
 
-                <ScrollViewer Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ScrollViewer.PanningMode="Both"
+                <ScrollViewer  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ScrollViewer.PanningMode="Both"
                                HorizontalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch"
                     VerticalScrollBarVisibility="Auto"
                               >
-                    <DockPanel  x:Name="EmployeeContent" LastChildFill="True"
-                    prism:RegionManager.RegionName="{x:Static infs:RegionNames.SelectedEmployeeRegion}">
-                        
-                    </DockPanel>
+                    <ad:DockingManager x:Name="dockingManager" prism:RegionManager.RegionName="{x:Static infs:RegionNames.SelectedEmployeeRegion}">
+                        <ad:LayoutRoot>
+                            <ad:LayoutRoot.BottomSide>
+                                <ad:LayoutAnchorSide/>
+                            </ad:LayoutRoot.BottomSide>
+                        </ad:LayoutRoot>
+                    </ad:DockingManager>
+                    
+                    
                 </ScrollViewer>
                 <Button Content="Button" Grid.Column="1"/>
             </Grid>

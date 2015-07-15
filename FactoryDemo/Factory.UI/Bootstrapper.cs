@@ -1,8 +1,8 @@
 ﻿using Factory.Dashboard;
 using Factory.EmployeeModule.Services;
+using Factory.Infrastructure.Adapters;
 using Factory.Logging;
 using Factory.Model;
-using Factory.UI.Adapters;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
@@ -10,6 +10,8 @@ using Microsoft.Practices.Prism.UnityExtensions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using Xceed.Wpf.AvalonDock;
+using Xceed.Wpf.AvalonDock.Layout;
 
 namespace Factory.UI
 {
@@ -91,7 +93,10 @@ namespace Factory.UI
         protected override Microsoft.Practices.Prism.Regions.RegionAdapterMappings ConfigureRegionAdapterMappings()
         {
             RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
-            mappings.RegisterMapping(typeof(DockPanel), Container.TryResolve<DockPanelRegionAdapter>());
+            //mappings.RegisterMapping(typeof(DockPanel), Container.TryResolve<DockPanelRegionAdapter>());
+            mappings.RegisterMapping(typeof(DockingManager), new DockingManagerRegionAdapter(Container.TryResolve<RegionBehaviorFactory>()));
+          
+
             return mappings;
         }
 

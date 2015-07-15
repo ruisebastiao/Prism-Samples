@@ -24,7 +24,6 @@ namespace Factory.EmployeeModule.Views
         public EmployeeView()
         {
             InitializeComponent();
-          
         }
 
       
