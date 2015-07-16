@@ -28,8 +28,11 @@ namespace Factory.Infrastructure.Adapters
                 //Removal
                 if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
                     foreach (FrameworkElement element in e.OldItems)
-                        if (regionTarget.Children.Contains(element))
-                            regionTarget.Children.Remove(element);
+                    {
+                        element.Visibility = Visibility.Collapsed;
+                        //if (regionTarget.Children.Contains(element))
+                        //    regionTarget.Children.Remove(element);
+                    }
             };
         }
 

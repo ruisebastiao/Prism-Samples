@@ -14,12 +14,6 @@ namespace Factory.Infrastructure.Controls
         public MoveThumb()
         {
             DragDelta += new DragDeltaEventHandler(this.MoveThumb_DragDelta);
-            TouchMove += MoveThumb_TouchMove;
-        }
-
-        void MoveThumb_TouchMove(object sender, System.Windows.Input.TouchEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
@@ -28,7 +22,25 @@ namespace Factory.Infrastructure.Controls
 
             if (designerItem != null)
             {
-               
+                if (designerItem.Parent is Canvas)
+                {
+                    Canvas parent = ((Canvas)designerItem.Parent);
+                  
+                    foreach (Control child in parent.Children)
+                    {
+                        if (child != designerItem)
+                        {
+
+
+                            double left1 = Canvas.GetLeft(child);
+                            if (left1 > 0)
+                            {
+
+                            }
+                        }
+                    }
+                }
+                
 
                 double left = Canvas.GetLeft(designerItem);
                 double top = Canvas.GetTop(designerItem);
