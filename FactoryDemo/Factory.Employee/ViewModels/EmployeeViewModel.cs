@@ -8,6 +8,7 @@ using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Unity;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -44,6 +45,7 @@ namespace Factory.EmployeeModule.ViewModels
             this.container = container;
             this.eventAggregator = this.container.Resolve<IEventAggregator>();
             this.modelService = this.container.Resolve<IModelService>();
+            EnableDraggingCommand = new DelegateCommand(EnableDragging, CanEnableDragging);
         }
 
 
@@ -61,6 +63,58 @@ namespace Factory.EmployeeModule.ViewModels
             this.Employee = employee;
         }
 
+        public DelegateCommand EnableDraggingCommand { get; private set;  }
+
+        private void EnableDragging()
+        {
+            IsDraggingEnabled = !IsDraggingEnabled;
+        }
+
+        private bool CanEnableDragging()
+        {
+            return true;
+        }
+
+        private Visibility _IsVisibleActive = Visibility.Hidden;
+
+        public Visibility IsVisibleActive
+        {
+            get { return _IsVisibleActive; }
+            private set {
+                SetProperty(ref _IsVisibleActive, value);
+            }
+        }
+
+        /// <summary> 
+        ///Get/Set IsDraggingEnabled 
+        /// </summary> 
+
+        private bool _IsDraggingEnabled;
+
+        public bool IsDraggingEnabled
+        {
+
+            get
+            {
+                return _IsDraggingEnabled;
+            }
+
+            set
+            {
+                SetProperty(ref _IsDraggingEnabled, value);
+                if (value)
+                {
+                    IsVisibleActive = Visibility.Visible;
+                }
+                else
+                {
+                    IsVisibleActive = Visibility.Hidden;
+                }
+            }
+
+        }
+
+        
 
 
 

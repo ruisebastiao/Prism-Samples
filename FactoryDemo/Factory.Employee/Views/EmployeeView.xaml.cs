@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using Factory.EmployeeModule.Extensions;
 
 namespace Factory.EmployeeModule.Views
 {
@@ -25,6 +26,21 @@ namespace Factory.EmployeeModule.Views
         {
             InitializeComponent();
           
+        }
+
+        private void employeecontrol_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.BringToFront();
+        }
+
+        private void employeecontrol_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            this.BringToFront();
+        }
+
+        private void employeecontrol_GotTouchCapture(object sender, TouchEventArgs e)
+        {
+            this.BringToFront();
         }
 
       

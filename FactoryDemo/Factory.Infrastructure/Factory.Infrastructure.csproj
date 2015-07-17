@@ -74,6 +74,7 @@
     <Compile Include="Adapters\CanvasRegionAdapter.cs" />
     <Compile Include="Adapters\GridRegionAdapter.cs" />
     <Compile Include="Controls\MoveThumb.cs" />
+    <Compile Include="Controls\ResizeThumb.cs" />
     <Compile Include="Events\HideApplicationMessageEvent.cs" />
     <Compile Include="Events\ShowApplicationMessageEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

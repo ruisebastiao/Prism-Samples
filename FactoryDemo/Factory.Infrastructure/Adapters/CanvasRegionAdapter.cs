@@ -30,8 +30,8 @@ namespace Factory.Infrastructure.Adapters
                     foreach (FrameworkElement element in e.OldItems)
                     {
                         element.Visibility = Visibility.Collapsed;
-                        //if (regionTarget.Children.Contains(element))
-                        //    regionTarget.Children.Remove(element);
+                        if (regionTarget.Children.Contains(element))
+                            regionTarget.Children.Remove(element);
                     }
             };
         }
