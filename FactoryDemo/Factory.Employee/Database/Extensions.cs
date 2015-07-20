@@ -12,8 +12,8 @@ namespace Factory.EmployeeModule.Database
     {
         public static Employee AddEmployee(this EmployeeData employeeData, string firstName, string lastName,bool isenabled)
         {
-            int customerNumber = employeeData.Any() ? employeeData.Max(m => m.EmployeeNumber) + 1 : EmployeeData.EmployeeNumberSeed;
-            Employee employee = new Employee() { EmployeeNumber = customerNumber, FirstName = firstName, LastName = lastName, IsEnabled=isenabled};
+            int customerNumber = employeeData.Any() ? employeeData.Max(m => m.Number) + 1 : EmployeeData.EmployeeNumberSeed;
+            Employee employee = new Employee() { Number = customerNumber, FirstName = firstName, LastName = lastName, IsEnabled=isenabled};
             employeeData.Add(employee);
             return employee;
         }

@@ -1,10 +1,11 @@
 ﻿using Factory.MVVM;
+using Factory.MVVM.Bases;
 using System;
 using System.ComponentModel;
 
 namespace Factory.EmployeeModule.Models
 {
-    public class Employee : BindableBaseEx, IDataErrorInfo
+    public class Employee :BindableBaseEx
     {
 
         #region Fields
@@ -24,12 +25,12 @@ namespace Factory.EmployeeModule.Models
             set
             {
                 SetProperty(ref _firstName, value, dependentProperties: new string[] { "FullName" });
-
+                
 
             }
         }
 
-
+        
 
         /// <summary> 
         ///Get/Set IsEnabled 
@@ -69,7 +70,7 @@ namespace Factory.EmployeeModule.Models
             get { return String.Format("{0} {1}", this.FirstName, this.LastName); }
         }
 
-        public int EmployeeNumber
+        public int Number
         {
             get { return _EmployeeNumber; }
             set
@@ -83,37 +84,7 @@ namespace Factory.EmployeeModule.Models
             return FullName;
         }
 
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public string this[string propertyName]
-        {
-            get {
-                string validationResult = null;
-                switch (propertyName)
-                {
-                    case "FirstName":
-                        if (String.IsNullOrEmpty(FirstName))
-                        {
-                            validationResult = "First name can't be empty";
-                        }
-                        
-                        break;
-                    case "LastName":
-                         if (String.IsNullOrEmpty(LastName))
-                        {
-                            validationResult = "Last name can't be empty";
-                        }
-                        
-                        break;
-                    default:
-                        throw new ApplicationException("Unknown Property being validated on Employee.");
-                }
-                return validationResult;
-            }
-        }
+       
         
         #endregion
 
@@ -123,10 +94,11 @@ namespace Factory.EmployeeModule.Models
         {
             FirstName = "Rui";
             LastName = "Sebastiao";
+           
         }
 
 
-        public Employee(string firstname, string lastname,bool isenabled)
+        public Employee(string firstname, string lastname,bool isenabled):this()
         {
             FirstName = firstname;
             LastName = lastname;

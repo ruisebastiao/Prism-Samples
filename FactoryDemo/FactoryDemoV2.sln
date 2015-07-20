@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory.Dashboard", "Factor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory.Logging", "Factory.Logging\Factory.Logging.csproj", "{A8A45A22-0F73-4717-AF6E-86888AAC86E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalProjects", "ExternalProjects", "{D62A89D6-8820-473E-96B8-45CCB59F05B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmValidation", "..\..\..\..\GitHub\mvvmvalidation\MvvmValidation\MvvmValidation.csproj", "{56D2052D-459D-402A-8938-174DACDC66C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,8 +49,15 @@ Global
 		{A8A45A22-0F73-4717-AF6E-86888AAC86E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8A45A22-0F73-4717-AF6E-86888AAC86E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8A45A22-0F73-4717-AF6E-86888AAC86E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D2052D-459D-402A-8938-174DACDC66C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D2052D-459D-402A-8938-174DACDC66C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D2052D-459D-402A-8938-174DACDC66C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D2052D-459D-402A-8938-174DACDC66C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{56D2052D-459D-402A-8938-174DACDC66C5} = {D62A89D6-8820-473E-96B8-45CCB59F05B2}
 	EndGlobalSection
 EndGlobal

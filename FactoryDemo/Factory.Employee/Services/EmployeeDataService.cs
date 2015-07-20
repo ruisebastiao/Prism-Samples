@@ -20,7 +20,7 @@ namespace Factory.EmployeeModule.Services
         public Employee GetEmployee(int employeeNumber)
         {
             Employee employee = null;
-            employee = this.entities.Employees.FirstOrDefault(f => f.EmployeeNumber == employeeNumber);
+            employee = this.entities.Employees.FirstOrDefault(f => f.Number == employeeNumber);
             return employee;
         }
 

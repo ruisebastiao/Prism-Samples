@@ -1,25 +1,21 @@
-﻿using Microsoft.Practices.Prism.Logging;
+﻿using Factory.EmployeeModule.Models;
+using Factory.EmployeeModule.Services;
+using Factory.MVVM;
+using Factory.MVVM.Bases;
+using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 using System.Collections.ObjectModel;
-using Factory.Infrastructure;
-using Microsoft.Practices.Prism.Mvvm;
-using System.Windows.Input;
-using Microsoft.Practices.Prism.Commands;
-using Factory.EmployeeModule.Services;
-using Factory.EmployeeModule.Events;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Data;
-using Factory.EmployeeModule.Models;
+using System.Windows.Input;
 
 namespace Factory.EmployeeModule.ViewModels
 {
-    public class EmployeesViewModel : BindableBase
+    public class EmployeesViewModel : ViewModelBase<EmployeesViewModel>
     {
         private IUnityContainer container = null;
         private ILoggerFacade logger = null;
@@ -64,17 +60,22 @@ namespace Factory.EmployeeModule.ViewModels
 
         private void OnSubmit()
         {
-            EmployeeVMList.Filter = obj => ((Employee)obj).EmployeeNumber <2;
+            EmployeeVMList.Filter = obj => ((EmployeeViewModel)obj).Employee.Number >10;
         }
 
         public EmployeesViewModel(IUnityContainer container)
         {
+           
             this.container = container;
             this.logger = this.container.Resolve<ILoggerFacade>();
             this.eventAggregator = this.container.Resolve<IEventAggregator>();
             this.modelService = this.container.Resolve<IModelService>();
             SubmitCommand = new DelegateCommand(this.OnSubmit);
+          
+
         }
+
+       
 
         public void Initialize()
         {
@@ -91,7 +92,20 @@ namespace Factory.EmployeeModule.ViewModels
                     
                 }
                 EmployeeVMList = new ListCollectionView(employeeVM);
-               
+                EmployeeVMList.CollectionChanged += EmployeeVMList_CollectionChanged;
+                //EmployeeVMList.Filter = o => ((EmployeeViewModel)o).Employee.EmployeeNumber < 10;
+                //// Rules.Add(new DelegateRule<EmployeesViewModel>(
+                ////"EmployeeVMList",
+                ////"Teste",
+                ////x =>EmployeeVMList.SourceCollection.ToList());
+
+            }
+        }
+
+        void EmployeeVMList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (true)
+            {
                 
             }
         }

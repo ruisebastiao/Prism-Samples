@@ -7,15 +7,16 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Factory.MVVM
+namespace Factory.MVVM.Bases
 {
-    public abstract class BindableBaseEx : BindableBase, IDisposable
+    public abstract partial class BindableBaseEx : BindableBase, IDisposable
     {
 
+      
 
         #region Protected Methods
 
-        protected bool SetProperty<T>(ref T storage, T value,
+        protected virtual bool SetProperty<T>(ref T storage, T value,
            [CallerMemberName] String propertyName = null,
            string[] dependentProperties = null)
         {
@@ -37,7 +38,6 @@ namespace Factory.MVVM
 
         #endregion
 
-        
         #region IDisposable Members
 
         /// <summary>

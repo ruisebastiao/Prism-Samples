@@ -4,6 +4,7 @@ using Factory.EmployeeModule.Services;
 using Factory.Infrastructure;
 using Factory.Infrastructure.Events;
 using Factory.MVVM;
+using Factory.MVVM.Bases;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Unity;
@@ -14,7 +15,7 @@ using System.Windows.Media;
 
 namespace Factory.EmployeeModule.ViewModels
 {
-    public class EmployeeViewModel : ViewModelBase<Employee>, IDataErrorInfo
+    public class EmployeeViewModel : ViewModelBase<EmployeeViewModel>
     {
         private IUnityContainer container = null;
         private IModelService modelService = null;
@@ -46,6 +47,7 @@ namespace Factory.EmployeeModule.ViewModels
             this.eventAggregator = this.container.Resolve<IEventAggregator>();
             this.modelService = this.container.Resolve<IModelService>();
             EnableDraggingCommand = new DelegateCommand(EnableDragging, CanEnableDragging);
+           
         }
 
 
@@ -149,22 +151,6 @@ namespace Factory.EmployeeModule.ViewModels
             }
         }
 
-        public string Error
-        {
-            get
-            {
-                return (Employee as IDataErrorInfo).Error;
-            }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                string error = (Employee as IDataErrorInfo)[columnName];
-                CommandManager.InvalidateRequerySuggested();
-                return error;
-            }
-        }
+       
     }
 }

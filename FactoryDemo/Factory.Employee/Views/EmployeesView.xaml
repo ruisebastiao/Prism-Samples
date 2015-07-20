@@ -80,7 +80,7 @@
                         
                     </Canvas>
                 </ScrollViewer>
-                <Button Content="Button" Grid.Column="1"/>
+                <Button Content="Button" Grid.Column="1" Command="{Binding SubmitCommand}"/>
             </Grid>
         </Border>
     </Grid>

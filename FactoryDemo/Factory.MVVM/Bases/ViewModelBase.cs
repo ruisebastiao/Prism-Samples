@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Factory.MVVM
+namespace Factory.MVVM.Bases
 {
-    public abstract class ViewModelBase<TModel>:BindableBaseEx where TModel:INotifyPropertyChanged
+    public abstract class ViewModelBase<TModel> : BindableBaseEx where TModel : INotifyPropertyChanged
     {
 
     }
