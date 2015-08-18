@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory.UI", "Factory.UI\Factory.UI.csproj", "{0F56EDA9-CF7F-4C49-A67B-3FCD434D4902}"
 EndProject
@@ -17,11 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory.Logging", "Factory.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{E375F45A-7667-4606-8EEA-7B8161F9481D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism", "..\..\..\..\GitHub\Prism\Source\Prism\Prism.csproj", "{E6C50355-D01E-4CAA-884D-D7929861315C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prism", "Prism", "{27E6768A-0DBA-4BA0-9287-670E7D54C5F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Wpf", "..\..\..\..\GitHub\Prism\Source\Wpf\Prism.Wpf\Prism.Wpf.csproj", "{5912FF03-C72B-4F56-BAA1-8642FDBFBC26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism", "..\..\Prism\Source\Prism\Prism.csproj", "{E6C50355-D01E-4CAA-884D-D7929861315C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Unity.Wpf", "..\..\..\..\GitHub\Prism\Source\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj", "{C1CE34C7-6AC9-4D54-BAD0-8467E9F9F38D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Wpf", "..\..\Prism\Source\Wpf\Prism.Wpf\Prism.Wpf.csproj", "{5912FF03-C72B-4F56-BAA1-8642FDBFBC26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Unity.Wpf", "..\..\Prism\Source\Wpf\Prism.Unity.Wpf\Prism.Unity.Wpf.csproj", "{C1CE34C7-6AC9-4D54-BAD0-8467E9F9F38D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,8 +72,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E6C50355-D01E-4CAA-884D-D7929861315C} = {E375F45A-7667-4606-8EEA-7B8161F9481D}
-		{5912FF03-C72B-4F56-BAA1-8642FDBFBC26} = {E375F45A-7667-4606-8EEA-7B8161F9481D}
-		{C1CE34C7-6AC9-4D54-BAD0-8467E9F9F38D} = {E375F45A-7667-4606-8EEA-7B8161F9481D}
+		{27E6768A-0DBA-4BA0-9287-670E7D54C5F3} = {E375F45A-7667-4606-8EEA-7B8161F9481D}
+		{E6C50355-D01E-4CAA-884D-D7929861315C} = {27E6768A-0DBA-4BA0-9287-670E7D54C5F3}
+		{5912FF03-C72B-4F56-BAA1-8642FDBFBC26} = {27E6768A-0DBA-4BA0-9287-670E7D54C5F3}
+		{C1CE34C7-6AC9-4D54-BAD0-8467E9F9F38D} = {27E6768A-0DBA-4BA0-9287-670E7D54C5F3}
 	EndGlobalSection
 EndGlobal
