@@ -1,5 +1,5 @@
 ﻿using Factory.EmployeeModule.ViewModels;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

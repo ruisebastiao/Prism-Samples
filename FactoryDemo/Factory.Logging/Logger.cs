@@ -1,6 +1,6 @@
 ﻿using log4net;
 using log4net.Config;
-using Microsoft.Practices.Prism.Logging;
+using Prism.Logging;
 
 namespace Factory.Logging
 {

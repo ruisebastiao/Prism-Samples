@@ -53,9 +53,14 @@ namespace Factory.EmployeeModule.Views
         {
             foreach (object value in values)
             {
-                if ((bool)value == true)
+                if (value != null)
                 {
-                    return true;
+
+
+                    if ((bool)value == true)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

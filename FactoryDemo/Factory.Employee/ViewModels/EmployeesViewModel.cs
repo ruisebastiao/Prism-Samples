@@ -2,10 +2,10 @@
 using Factory.EmployeeModule.Services;
 using Factory.MVVM;
 using Factory.MVVM.Bases;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Logging;
-using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Unity;
+using Prism.Commands;
+using Prism.Events;
+using Prism.Logging;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -70,12 +70,17 @@ namespace Factory.EmployeeModule.ViewModels
             this.logger = this.container.Resolve<ILoggerFacade>();
             this.eventAggregator = this.container.Resolve<IEventAggregator>();
             this.modelService = this.container.Resolve<IModelService>();
-            SubmitCommand = new DelegateCommand(this.OnSubmit);
+            SubmitCommand = new DelegateCommand(this.OnSubmit,this.CanSubmit);
           
 
         }
 
-       
+        public bool CanSubmit()
+        {
+            var result = EmployeeVMList.SourceCollection.OfType<EmployeeViewModel>().All(vm => vm.HasErrors)==false;
+
+            return result;
+        }
 
         public void Initialize()
         {
@@ -93,6 +98,7 @@ namespace Factory.EmployeeModule.ViewModels
                 }
                 EmployeeVMList = new ListCollectionView(employeeVM);
                 EmployeeVMList.CollectionChanged += EmployeeVMList_CollectionChanged;
+                
                 //EmployeeVMList.Filter = o => ((EmployeeViewModel)o).Employee.EmployeeNumber < 10;
                 //// Rules.Add(new DelegateRule<EmployeesViewModel>(
                 ////"EmployeeVMList",
@@ -104,9 +110,9 @@ namespace Factory.EmployeeModule.ViewModels
 
         void EmployeeVMList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (true)
+            if (e.Action== System.Collections.Specialized.NotifyCollectionChangedAction.Add )
             {
-                
+                 
             }
         }
     }

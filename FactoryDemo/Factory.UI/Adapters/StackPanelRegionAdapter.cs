@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Prism.Regions;
+﻿
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;

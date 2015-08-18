@@ -1,10 +1,10 @@
 ﻿using Factory.Dashboard.Controllers;
 using Factory.Dashboard.Views;
 using Factory.Infrastructure;
-using Microsoft.Practices.Prism.Logging;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
+using Prism.Logging;
+using Prism.Modularity;
+using Prism.Regions;
 
 namespace Factory.Dashboard
 {

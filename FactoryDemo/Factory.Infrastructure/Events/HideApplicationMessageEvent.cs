@@ -1,6 +1,5 @@
 ﻿
-using Microsoft.Practices.Prism.Events;
-using Microsoft.Practices.Prism.PubSubEvents;
+using Prism.Events;
 namespace Factory.Infrastructure.Events
 {
     public class HideApplicationMessageEvent : PubSubEvent<object> { }

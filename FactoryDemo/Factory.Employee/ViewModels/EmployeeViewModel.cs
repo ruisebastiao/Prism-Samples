@@ -1,25 +1,29 @@
-﻿using Factory.EmployeeModule.Events;
+﻿
+using Factory.EmployeeModule.Events;
 using Factory.EmployeeModule.Models;
 using Factory.EmployeeModule.Services;
-using Factory.Infrastructure;
-using Factory.Infrastructure.Events;
-using Factory.MVVM;
 using Factory.MVVM.Bases;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Unity;
-using System.ComponentModel;
+using Prism.Commands;
+using Prism.Events;
 using System.Windows;
+using System.Reactive;
+using System.Reactive.Linq;
+using System;
 using System.Windows.Input;
-using System.Windows.Media;
+using Factory.MVVM.Rules;
 
 namespace Factory.EmployeeModule.ViewModels
 {
-    public class EmployeeViewModel : ViewModelBase<EmployeeViewModel>
+    public class EmployeeViewModel : ValidatableBindableBase<EmployeeViewModel>
     {
         private IUnityContainer container = null;
         private IModelService modelService = null;
         private IEventAggregator eventAggregator = null;
+
+        public ICommand SaveCommand { get; private set; }
+
+        private IDisposable employeeChangedSubscription;
 
         private Employee _employee = null;
 
@@ -28,28 +32,80 @@ namespace Factory.EmployeeModule.ViewModels
             get { return _employee; }
             private set
             {
+
+                if (this.employeeChangedSubscription != null)
+                {
+                    this.employeeChangedSubscription.Dispose();
+                    this.employeeChangedSubscription = null;
+                }
                 SetProperty(ref _employee, value);
+                employeeChangedSubscription = _employee.WhenErrorsChanged.Subscribe(ModelHasErrors);
+                
             }
         }
 
 
-        public Brush Background
+
+        private void ModelHasErrors(string paramName)
         {
-            get
-            {
-                return IsSelected ? Brushes.Pink : Brushes.LightGreen;
-            }
+            IsValid = Employee.HasErrors == false;
         }
+
+        
 
         public EmployeeViewModel(IUnityContainer container)
         {
+          
             this.container = container;
             this.eventAggregator = this.container.Resolve<IEventAggregator>();
             this.modelService = this.container.Resolve<IModelService>();
             EnableDraggingCommand = new DelegateCommand(EnableDragging, CanEnableDragging);
-           
+            SaveCommand = new DelegateCommand(this.OnSave, this.CanSave).ObservesCanExecute((o) => IsValid);
+            
+
+          
         }
 
+        private void OnSave()
+        {
+            
+        }
+
+        private bool CanSave()
+        {
+
+            return IsValid;
+        }
+
+
+
+
+
+        /// <summary> 
+        ///Get/Set IsValid 
+        /// </summary> 
+
+        private bool _IsValid;
+
+        public bool IsValid
+        {
+
+            get
+            {
+                return _IsValid;
+            }
+
+            private set
+            {
+                SetProperty(ref _IsValid, value);
+            }
+
+        }
+
+        
+      
+
+        
 
         public override string ToString()
         {
@@ -146,7 +202,7 @@ namespace Factory.EmployeeModule.ViewModels
         {
             get { return _isSelected && IsEnabled; }
             set {
-                SetProperty(ref _isSelected, value, dependentProperties: new string[] { "Background" });
+                SetPropertyDependent(ref _isSelected, value, dependentProperties: new string[] { "Background" });
                 this.eventAggregator.GetEvent<SetVisibleEmployeeViewModelEvent>().Publish(this); 
             }
         }

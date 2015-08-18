@@ -2,10 +2,10 @@
 using Factory.Dashboard.Views;
 using Factory.Infrastructure;
 using Factory.Infrastructure.Events;
-using Microsoft.Practices.Prism.Logging;
-using Microsoft.Practices.Prism.PubSubEvents;
-using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
+using Prism.Events;
+using Prism.Logging;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

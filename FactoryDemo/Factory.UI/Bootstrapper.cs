@@ -4,10 +4,10 @@ using Factory.Infrastructure.Adapters;
 using Factory.Logging;
 using Factory.Model;
 using Factory.UI.Adapters;
-using Microsoft.Practices.Prism.Logging;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
-using Microsoft.Practices.Prism.UnityExtensions;
+using Prism.Logging;
+using Prism.Modularity;
+using Prism.Regions;
+using Prism.Unity;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -89,8 +89,9 @@ namespace Factory.UI
         }
 
 
-        protected override Microsoft.Practices.Prism.Regions.RegionAdapterMappings ConfigureRegionAdapterMappings()
+        protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
         {
+
             RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
             mappings.RegisterMapping(typeof(DockPanel), Container.TryResolve<DockPanelRegionAdapter>());
             mappings.RegisterMapping(typeof(StackPanel), Container.TryResolve<StackPanelRegionAdapter>());

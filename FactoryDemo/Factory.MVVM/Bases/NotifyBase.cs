@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Prism.Mvvm;
+﻿using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,20 +9,19 @@ using System.Threading.Tasks;
 
 namespace Factory.MVVM.Bases
 {
-    public abstract partial class BindableBaseEx : BindableBase, IDisposable
+    public abstract class NotifyBase : BindableBase, IDisposable
     {
 
       
 
         #region Protected Methods
 
-        protected virtual bool SetProperty<T>(ref T storage, T value,
+        protected virtual bool SetPropertyDependent<T>(ref T storage, T value,
            [CallerMemberName] String propertyName = null,
            string[] dependentProperties = null)
         {
-            if (Equals(storage, value)) return false;
-            storage = value;
-            OnPropertyChanged(propertyName);
+
+            var result = SetProperty<T>(storage:ref storage,value:value,propertyName:propertyName);
 
             if (dependentProperties != null)
             {
@@ -59,7 +58,7 @@ namespace Factory.MVVM.Bases
         /// <summary>
         /// Useful for ensuring that ViewModel objects are properly garbage collected.
         /// </summary>
-        ~BindableBaseEx()
+        ~NotifyBase()
         {
             string msg = string.Format("{0} ({1}) Finalized", this.GetType().Name, this.GetHashCode());
             System.Diagnostics.Debug.WriteLine(msg);

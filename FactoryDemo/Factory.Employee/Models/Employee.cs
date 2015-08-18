@@ -1,11 +1,13 @@
 ﻿using Factory.MVVM;
 using Factory.MVVM.Bases;
+using Factory.MVVM.Rules;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Factory.EmployeeModule.Models
 {
-    public class Employee :BindableBaseEx
+    public class Employee : ValidatableBindableBase<Employee>
     {
 
         #region Fields
@@ -18,13 +20,13 @@ namespace Factory.EmployeeModule.Models
         #endregion
 
         #region Properties
-
+       
         public String FirstName
         {
             get { return _firstName; }
             set
             {
-                SetProperty(ref _firstName, value, dependentProperties: new string[] { "FullName" });
+                SetPropertyDependent(ref _firstName, value, dependentProperties: new string[] { "FullName" });
                 
 
             }
@@ -60,7 +62,7 @@ namespace Factory.EmployeeModule.Models
             get { return _lastName; }
             set
             {
-                SetProperty(ref _lastName, value, dependentProperties: new string[] { "FullName" });
+                SetPropertyDependent(ref _lastName, value, dependentProperties: new string[] { "FullName" });
 
             }
         }
@@ -94,7 +96,10 @@ namespace Factory.EmployeeModule.Models
         {
             FirstName = "Rui";
             LastName = "Sebastiao";
-           
+            Rules.Add(new DelegateRule<Employee>(
+            "FirstName",
+            "First Name cannot be empty.",
+            x => !string.IsNullOrEmpty(x.FirstName)));
         }
 
 

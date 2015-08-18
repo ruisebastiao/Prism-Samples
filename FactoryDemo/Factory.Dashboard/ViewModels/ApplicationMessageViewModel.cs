@@ -1,9 +1,8 @@
 ﻿using Factory.Infrastructure.Events;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Mvvm;
-using Microsoft.Practices.Prism.PubSubEvents;
-using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Unity;
+using Prism.Commands;
+using Prism.Events;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

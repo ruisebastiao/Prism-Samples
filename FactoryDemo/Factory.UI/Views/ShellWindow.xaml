@@ -7,7 +7,7 @@
                       Height="433"
                       Width="610"
                       xmlns:infs="clr-namespace:Factory.Infrastructure;assembly=Factory.Infrastructure"
-                      xmlns:prism="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism.Composition"
+                      xmlns:prism="clr-namespace:Prism.Regions;assembly=Prism.Wpf"
                       WindowState="Maximized"
                       >
 

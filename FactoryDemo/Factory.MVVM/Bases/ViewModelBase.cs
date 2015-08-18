@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Factory.MVVM.Bases
 {
-    public abstract class ViewModelBase<TModel> : BindableBaseEx where TModel : INotifyPropertyChanged
+    public abstract class ViewModelBase<TModel> : NotifyBase where TModel : INotifyPropertyChanged
     {
 
     }
