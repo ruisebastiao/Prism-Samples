@@ -6,7 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.exe
 # User-specific folders
 *.sln.ide/
 
